@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/*.step)",
+      "Read(**/*.STEP)",
+      "Read(**/*.stp)",
+      "Read(**/*.STP)",
+      "Read(**/*.f3d)",
+      "Read(**/*.f3z)",
+      "Read(**/*.zip)",
+      "Read(**/*.db)",
+      "Read(**/production_files/**)"
+    ]
+  }
+}
