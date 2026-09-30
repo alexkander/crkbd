@@ -15,4 +15,5 @@ Key facts:
 - `pcbs/common/kbd/` is a git subtree of https://github.com/foostan/kbd. Update it with `make pull-kbd-module`; do not edit it in place unless the change is meant to be upstreamed.
 - Every build guide exists as an English/Japanese pair (`*_en.md` / `*_jp.md`); change both together.
 - `docs/` is the user-facing documentation and is unrelated to `docs-agents/`.
+- Answer questions about the boards with the `kicad-inspect` skill instead of reading `.kicad_pcb` / `.kicad_sch` files. The files are in the KiCad 7 format; never save or upgrade them with a newer KiCad unless asked.
 - `.claude/settings.json` denies reading 3D models, zips, `.db` files, and `production_files/` to save tokens. Get information about them from their source (KiCad projects, file names, git history) instead of working around the rule with shell commands.

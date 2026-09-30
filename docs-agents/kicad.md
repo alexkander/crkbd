@@ -40,3 +40,9 @@ make kicad-symbols-comparelibs
 ```
 
 The symbol targets still reference the legacy `*.lib` format and a `sym-lib-table`, while the library is now a single `.kicad_sym` file, so they are likely to fail as written.
+
+## Inspecting projects
+
+Use the `kicad-inspect` skill (`.claude/skills/kicad-inspect/`) instead of reading `.kicad_pcb` or `.kicad_sch` files: it wraps `kicad-cli` to report summaries, the BOM, net connections, DRC/ERC counts, and semantic diffs between git revisions. It needs `kicad-cli` (KiCad 10 was used to write it).
+
+The files are in the KiCad 7 format. Opening and saving them in a newer KiCad upgrades the format, producing a huge diff and making them unreadable for older KiCad versions; do not save or run `kicad-cli pcb upgrade` unless that migration is intended.

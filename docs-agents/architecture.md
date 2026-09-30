@@ -9,6 +9,7 @@ The Corne is a split keyboard with 3x6 column-staggered keys plus 3 thumb keys p
 | `pcbs/corne-cherry/hotswap/` | Current (v4.x) KiCad project for Cherry MX compatible switches. |
 | `pcbs/corne-chocolate/hotswap/` | Current (v4.x) KiCad project for Kailh Choc v1/v2 switches. |
 | `pcbs/*/hotswap/jlcpcb/` | JLCPCB order data: `production_files/` (BOM, CPL, zipped Gerbers) and `project.db`. |
+| `pcbs/common/left.kicad_sch`, `right.kicad_sch` | Hierarchical schematic sheets for each half, shared by both board projects. |
 | `pcbs/common/kbd/` | Shared KiCad symbol, footprint, and 3D model libraries (git subtree, see `kicad.md`). |
 | `plates/3x6/`, `plates/3x5/` | Top and bottom plates, as KiCad PCB designs (`pcb/`, with their own `jlcpcb/production_files/`) and as SVG outlines (`svg/`). Top plates come in `cherrymx`/`alps` variants, with `-ex` versions. |
 | `cases/3x6/`, `cases/3x5/` | Left/right case models in STEP format. |
@@ -21,6 +22,10 @@ Only v4 hardware sources are in the tree. Older boards (corne-classic v1, cherry
 The PCB revision is stored in the KiCad title block (`rev` in the `.kicad_pcb`, e.g. `4.1.0`). v4.0.0 and v4.1.0 need different firmware builds (`docs/firmware/rev4/`), so revision bumps must be reflected there.
 
 A single PCB project serves both the 3x6 and 3x5 (mini) layouts; plates and cases are split by layout instead.
+
+## Board structure
+
+Each board project puts both halves on one panel, joined by breakaway tabs. The top-level schematic instantiates the shared `left` and `right` sheets from `pcbs/common/`, so a schematic change there affects both the cherry and chocolate boards. Right-half references carry an `r` prefix (`U1` / `rU1`) and right-half power nets an `R` suffix (`GND` / `GNDR`, `VBUS` / `VBUSR`). Each half has its own RP2040 MCU.
 
 ## Generated artifacts
 
